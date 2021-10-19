@@ -1,0 +1,14 @@
+trigger:
+- master
+
+pool:
+  name: 'test'
+
+steps:
+- task: AzurePowerShell@5
+  inputs:
+    azureSubscription: 'myserviceconn'
+    ScriptType: 'FilePath'
+    ScriptPath: './Deploy-AzTemplate.ps1'
+    ScriptArguments: -Location 'centralus' -ResourceGroupName 'test5' -TemplateFile templates\mainTemplate.json
+    azurePowerShellVersion: 'LatestVersion'
